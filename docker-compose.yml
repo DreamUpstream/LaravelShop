@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  nginx:
+    build: ./nginx/
+    container_name: laravel-eshop-nginx
+    working_dir: /home/laravel-eshop
+    ports:
+      - 8085:80
+    volumes:
+      - ./src:/home/laravel-eshop
+  php:
+    build: ./php/
+    container_name: laravel-eshop-php
+    working_dir: /home/laravel-eshop
+    volumes:
+      - ./src:/home/laravel-eshop
+      - ./src/storage/logs/php-fpm:/var/log/php-fpm
+    env_file:
+      - ./src/.env
+  db:
+    container_name: laravel-eshop-db
+    image: mariadb:10.6.5
+    env_file:
+      - ./mysql/.env
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    ports:
+      - 3336:3306

@@ -14,8 +14,8 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', [Controllers\Home\HomeController::class, 'index']);
-Route::get('/products', [Controllers\Products\ProductController::class, 'index']);
-Route::get('/orders', [Controllers\Orders\OrderController::class, 'index']);
-Route::get('/contact', [Controllers\Contacts\ContactController::class, 'index']);
+Route::get('/', [Controllers\Home\HomeController::class, 'index'])->name('home');
+Route::get('/products', [Controllers\Products\ProductController::class, 'index'])->name('products');
+Route::get('/orders', [Controllers\Orders\OrderController::class, 'index'])->name('orders');
+Route::get('/contact', [Controllers\Contacts\ContactController::class, 'index'])->name('contact');
 

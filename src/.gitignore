@@ -1,5 +1,11 @@
 /node_modules
 /public/hot
+/public/css
+/public/js
+/public/img
+/public/webfonts
+/public/fonts
+/public/images
 /public/storage
 /storage/*.key
 /vendor
@@ -13,3 +19,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+

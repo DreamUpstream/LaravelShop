@@ -1,5 +1,9 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
+mix.version();
+if (mix.inProduction()) {
+    mix.sourceMaps();
+}
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,7 +15,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js("resources/js/app.js", "public/js/app.js");
+mix.sass("resources/sass/app.scss", "public/css/app.css");
+mix.copy("resources/img", "public/img");
+mix.copy("resources/img/products", "public/img/products");
+mix.copy("resources/webfonts", "public/webfonts", false);

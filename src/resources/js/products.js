@@ -51,8 +51,21 @@ for (let i = 0; i < radioSelects.length; i++) {
 document
     .getElementById("productCategory")
     .addEventListener("click", function (e) {
-        if (e.target && e.target.matches("li.categoryItem")) {
-            e.target.className = "foo"; // new class name here
-            alert("clicked " + e.target.innerText);
+        if (e.target && e.target.matches("a.categoryItem")) {
+            switch (e.target.innerText) {
+                case "Men's":
+                    searchParams.set("category", "1");
+                    urlRedirectDebounce();
+                    break;
+                case "Women's":
+                    searchParams.set("category", "2");
+                    urlRedirectDebounce();
+                    break;
+                case "All":
+                    if (searchParams.has("category"))
+                        searchParams.delete("category");
+                    urlRedirectDebounce();
+                    break;
+            }
         }
     });

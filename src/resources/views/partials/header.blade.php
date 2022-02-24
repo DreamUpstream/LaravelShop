@@ -2,7 +2,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand text-dark logo h1 align-self-center" href="/">
-            <img src="{{mix('img/logo.png')}}" id="logo" alt="">
+            <img src="{{asset('storage/img/logo.png')}}" id="logo" alt="">
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#codeshop_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

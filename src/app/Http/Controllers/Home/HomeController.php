@@ -9,6 +9,9 @@ class HomeController extends Controller
 {
     public function index()
     {
+        // if ($request->has('search') && is_string($request->search)) {
+            
+        // }
         return view('homePage.index');
     }
 }

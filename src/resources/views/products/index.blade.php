@@ -3,5 +3,5 @@
   @include('products.products')
 @endsection
 @push('scripts')
-  {{-- <script src="{{ mix('example.js') }}"></script> --}}
+  <script src="{{ mix('js/products.js') }}"></script>
 @endpush

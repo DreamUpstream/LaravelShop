@@ -14,10 +14,6 @@ const urlRedirectDebounce = debounce(() => {
     window.location.href = "/products?" + decodeURI(searchParams.toString());
 });
 
-function padarykKazkaIsDvieju(kazkaFunkcija) {
-    return kazkaFunkcija(...args);
-}
-
 document
     .querySelector("#productFilter")
     .addEventListener("change", function () {

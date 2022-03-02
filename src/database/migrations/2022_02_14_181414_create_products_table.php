@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->string('productSizes')->nullable();
+            $table->string('productBrand')->nullable();
             $table->integer('productRating');
             $table->string('SKU')->unique();
             $table->decimal('price', 10, 2);

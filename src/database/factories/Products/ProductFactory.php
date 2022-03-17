@@ -25,8 +25,8 @@ class ProductFactory extends Factory
             'image' => 'shop_example.jpg',
             'SKU' => $this->faker->ean13(),
             'is_active' => rand(0, 1),
-            'productRating' => rand(1, 5),
-            'productBrand' => ucfirst($this->faker->word(1))
+            'product_rating' => rand(1, 5),
+            'product_brand' => ucfirst($this->faker->word(1))
         ];
     }
 }

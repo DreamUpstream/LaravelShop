@@ -11,9 +11,6 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        // $dummyProducts = $this->dummyData();
-        // shuffle($dummyProducts);
-        // return view('products.index', ['dummyProducts' => $dummyProducts]);
         
         $query = Models\Products\Product::where('is_active', true);
 
@@ -43,23 +40,23 @@ class ProductController extends Controller
         if ($request->has('rating') && is_numeric($request->rating)) {
             switch ($request->rating) {
                 case 1:
-                    $query->where('productRating', 1);
+                    $query->where('product_rating', 1);
                     break;
 
                 case 2:
-                    $query->where('productRating', 2);
+                    $query->where('product_rating', 2);
                     break;
 
                 case 3:
-                    $query->where('productRating', 3);
+                    $query->where('product_rating', 3);
                     break;
                 
                 case 4:
-                    $query->where('productRating', 4);
+                    $query->where('product_rating', 4);
                     break;
 
                 case 5:
-                    $query->where('productRating', 5);
+                    $query->where('product_rating', 5);
                     break;
             }
         }
@@ -109,72 +106,12 @@ class ProductController extends Controller
         return $view;
     }
 
-    // public function dummyData() {
-    //     $dummyProducts = [
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_01.jpg",
-    //                 "productPrice" => 59.99,
-    //                 "productRating" => 4,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_02.jpg",
-    //                 "productPrice" => 19.99,
-    //                 "productRating" => 3,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_03.jpg",
-    //                 "productPrice" => 69.99,
-    //                 "productRating" => 5,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_04.jpg",
-    //                 "productPrice" => 99.99,
-    //                 "productRating" => 2,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_05.jpg",
-    //                 "productPrice" => 199.99,
-    //                 "productRating" => 1,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_06.jpg",
-    //                 "productPrice" => 129.99,
-    //                 "productRating" => 4,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_07.jpg",
-    //                 "productPrice" => 99.99,
-    //                 "productRating" => 5,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_08.jpg",
-    //                 "productPrice" => 79.99,
-    //                 "productRating" => 3,
-    //             ],
-    //             [
-    //                 "productName" => "Example product",
-    //                 "productSizes" => "M/L/X/XL",
-    //                 "productPhoto" => "shop_09.jpg",
-    //                 "productPrice" => 59.99,
-    //                 "productRating" => 5,
-    //             ]
-    //     ];
-    //     return $dummyProducts;
-    // }
+    public function showProduct(Request $request, $name, $id)
+    {
+        $product = Models\Products\Product::where('is_active', true)->where('id', $id)->first();
+        $relatedProducts = Models\Products\Product::where('is_active', true)->where('id', '!=' , $id)->get();
+        return view('products.productIndex', compact('product', 'relatedProducts'));
+    }
 }
+
+

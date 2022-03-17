@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->string('productBrand')->nullable();
-            $table->integer('productRating');
+            $table->string('product_brand')->nullable();
+            $table->integer('product_rating');
             $table->string('SKU')->unique();
             $table->decimal('price', 10, 2);
             $table->json('details')->nullable();

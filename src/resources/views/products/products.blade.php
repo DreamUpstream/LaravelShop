@@ -19,17 +19,17 @@
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="{{$product->url}}"><i class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
                                 {{-- Product name --}}
-                                <a href="#" class="h3 fw-bold text-decoration-none">{{$product->name}}</a>
+                                <a href="{{$product->url}}" class="h3 fw-bold text-decoration-none">{{$product->name}}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     {{-- Product brand --}}
-                                    <li>{{$product->productBrand}}</li>
+                                    <li>{{$product->product_brand}}</li>
                                     <li class="pt-2">
                                         <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
                                         <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
@@ -41,10 +41,10 @@
                                 <ul class="list-unstyled d-flex justify-content-center mb-1">
                                     <li>
                                         {{-- Ratings --}}
-                                        @for($i = 0; $i < $product->productRating; $i++)
+                                        @for($i = 0; $i < $product->product_rating; $i++)
                                         <i class="text-warning fa fa-star"></i>
                                         @endfor
-                                        @for($i = 0; $i < 5-$product->productRating; $i++)
+                                        @for($i = 0; $i < 5-$product->product_rating; $i++)
                                         <i class="text-muted fa fa-star"></i>
                                         @endfor 
                                     </li>

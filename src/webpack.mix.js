@@ -1,9 +1,20 @@
 const mix = require("laravel-mix");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 mix.version();
+
+const options = {
+    extensions: [`js`, `vue`],
+};
+
+mix.webpackConfig({
+    plugins: [new ESLintPlugin(options)],
+});
+
 if (mix.inProduction()) {
     mix.sourceMaps();
 }
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -17,7 +28,6 @@ if (mix.inProduction()) {
 
 mix.js("resources/js/app.js", "public/js/app.js");
 mix.js("resources/js/products.js", "public/js/products.js");
-
 mix.sass("resources/sass/app.scss", "public/css/app.css");
 mix.copy("resources/webfonts", "public/webfonts", false);
 

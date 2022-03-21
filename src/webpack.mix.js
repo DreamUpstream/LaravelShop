@@ -17,5 +17,9 @@ if (mix.inProduction()) {
 
 mix.js("resources/js/app.js", "public/js/app.js");
 mix.js("resources/js/products.js", "public/js/products.js");
+
 mix.sass("resources/sass/app.scss", "public/css/app.css");
 mix.copy("resources/webfonts", "public/webfonts", false);
+
+mix.js("resources/js/shop/main.js", "public/js/shop.js").vue();
+mix.sass("resources/sass/shop/app.scss", "public/css/shop.css");

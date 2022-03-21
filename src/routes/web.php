@@ -26,4 +26,5 @@ Route::get('/contact', [Controllers\Contacts\ContactController::class, 'index'])
 
 Route::get('/products/{name}/{id}', [Controllers\Products\ProductController::class, 'showProduct'])->name('products.show');
 
+Route::view('/shop', 'shop.index');
 

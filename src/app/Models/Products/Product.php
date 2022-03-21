@@ -10,6 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $appends = ['url'];
+
     public function getUrlAttribute() {
         $name =  Str::slug($this->name, '-');
         return route("products.show", [$name, $this->id]);

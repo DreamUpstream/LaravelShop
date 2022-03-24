@@ -24,7 +24,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->numberBetween(15,250),
             'image' => 'shop_example.jpg',
             'SKU' => $this->faker->ean13(),
-            'is_active' => rand(0, 1),
+            'is_active' => rand(true, false),
             'product_rating' => rand(1, 5),
             'product_brand' => ucfirst($this->faker->word(1))
         ];

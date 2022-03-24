@@ -12,6 +12,10 @@ class Product extends Model
 
     protected $appends = ['url'];
 
+    protected $fillable = [
+        'is_active', 'category_id', 'name', 'description', 'image', 'product_brand', 'product_rating', 'SKU', 'price'
+    ];
+
     public function getUrlAttribute() {
         $name =  Str::slug($this->name, '-');
         return route("products.show", [$name, $this->id]);

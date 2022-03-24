@@ -1,5 +1,5 @@
 const mix = require("laravel-mix");
-const ESLintPlugin = require("eslint-webpack-plugin");
+// const ESLintPlugin = require("eslint-webpack-plugin");
 
 mix.version();
 
@@ -7,9 +7,9 @@ const options = {
     extensions: [`js`, `vue`],
 };
 
-mix.webpackConfig({
-    plugins: [new ESLintPlugin(options)],
-});
+// mix.webpackConfig({
+//     plugins: [new ESLintPlugin(options)],
+// });
 
 if (mix.inProduction()) {
     mix.sourceMaps();

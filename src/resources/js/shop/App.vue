@@ -1,11 +1,11 @@
 <script setup>
-import ProductsView from "./views/products/ProductsView.vue";
+import CreateProductView from "./views/products/create/CreateProductView.vue";
 </script>
 
 <template>
     <div class="container py-3">
         <main>
-            <ProductsView />
+            <CreateProductView />
         </main>
     </div>
 </template>

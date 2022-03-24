@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::prefix('/v1')->name('api.')->group(function() {
-    Route::prefix('/products')->name('products.')->group(function() {
-        Route::get('/', [Controllers\Api\V1\Products\ProductController::class, 'index']);
-    });
+
+Route::prefix('/products')->name('products.')->group(function() {
+        Route::get('/', [Controllers\Api\Products\ProductController::class, 'index']);
+        Route::post('/store', [Controllers\Api\Products\ProductController::class, 'storeProduct']);
 });

@@ -112,6 +112,11 @@ class ProductController extends Controller
         $relatedProducts = Models\Products\Product::where('is_active', true)->where('id', '!=' , $id)->get();
         return view('products.productIndex', compact('product', 'relatedProducts'));
     }
+
+    public function storeProduct(Request $request)
+    {
+       //not implemented yet
+    }
 }
 
 

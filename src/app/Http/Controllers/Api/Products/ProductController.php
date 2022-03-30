@@ -110,26 +110,33 @@ class ProductController extends Controller
         return response()->json(compact('products'));
     }
 
-    // ==== FROM BLADE VIEW BRANCH ===
-    // public function showProduct(Request $request, $name, $id)
-    // {
-    //     $product = Models\Products\Product::where('is_active', true)->where('id', $id)->first();
-    //     $relatedProducts = Models\Products\Product::where('is_active', true)->where('id', '!=' , $id)->get();
-    //     return view('products.productIndex', compact('product', 'relatedProducts'));
-    // }
+    public function showProduct(Request $request)
+    {
+        $product = Models\Products\Product::where('is_active', true)->where('id', $request->id)->first();
+        return response()->json(compact('product'));
+    }
 
     public function storeProduct(Requests\StoreProductRequest $request)
     {
-        
-        $product = new Models\Products\Product($request->validated());
+        if($request->id){
+            $product = Models\Products\Product::find($request->id);
+        }
+        else {
+            $product = new Models\Products\Product;
+        }
+        $product->fill($request->validated());
+
+        $product->description = json_decode($request->description);
+
         if ($request->hasFile('image')) {
             $uid = Str::uuid();
             $fileExt = $request->file("image")->extension();
+
+            $product->image="shop_".$uid.'.'.$fileExt;
             $product->image = $request->file("image")->storeAs(
                 'public/img/products',
-                "shop_".$uid.'.'.$fileExt
+                $product->image
             );
-            $product->image = "shop_".$uid.'.'.$fileExt;
         }
         else {
             $product->image ="shop_example.jpg";

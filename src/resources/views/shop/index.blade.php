@@ -10,6 +10,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/img/favicon.ico') }}">
     <link rel="stylesheet" href=" {{ mix('css/app.css') }} ">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <script>
+        const ROOT_URL = '{{url('/')}}'
+    </script>
     @stack('links')
 </head>
 <body>

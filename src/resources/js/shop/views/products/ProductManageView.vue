@@ -2,11 +2,15 @@
 import { createApp, reactive } from "vue";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import axios from "axios";
+import { useRoute } from "vue-router";
 
 const app = createApp();
 app.component("QuillEditor", QuillEditor);
 
 const state = reactive({
+    loading: true,
+    productImage: null,
     name: "",
     product_brand: "",
     is_active: false,
@@ -18,22 +22,39 @@ const state = reactive({
     price: null,
     image: null,
     loading: false,
+    id: null,
 });
 
+const route = useRoute();
+
+if (route.params.id) {
+    axios.get(`/api/products/find?id=${route.params.id}`).then((response) => {
+        let product = response.data.product;
+        state.name = product.name;
+        state.product_brand = product.product_brand;
+        state.is_active = Boolean(product.is_active);
+        state.category_id = product.category_id;
+        state.product_rating = product.product_rating;
+        state.SKU = product.SKU;
+        state.price = product.price;
+        state.id = product.id;
+    });
+}
+
 function processInfo() {
-    if (state.description) {
-        state.description = JSON.stringify(state.description);
-    }
     let formData = new FormData();
     formData.append("name", state.name);
     formData.append("category_id", state.category_id);
-    formData.append("description", state.description);
+    formData.append("description", JSON.stringify(state.description));
     formData.append("price", state.price);
     formData.append("image", document.querySelector("#formFile").files[0]);
     formData.append("product_brand", state.product_brand);
     formData.append("is_active", +state.is_active);
     formData.append("product_rating", state.product_rating);
     formData.append("SKU", state.SKU);
+    if (state.id) {
+        formData.append("id", state.id);
+    }
     return formData;
 }
 
@@ -171,23 +192,3 @@ function postProduct() {
         </h4>
     </div>
 </template>
-
-<style scoped>
-.loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-</style>

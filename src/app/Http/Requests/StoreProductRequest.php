@@ -21,7 +21,7 @@ class StoreProductRequest extends FormRequest
             'description' => 'required',
             'product_brand' => ['required', 'max:50'],
             'product_rating' => ['required', 'integer', 'min:1', 'max:5'],
-            'SKU' => ['required', 'integer'],
+            'SKU' => ['required', 'integer', 'unique:products,SKU,'.request('id')],
             'price' => ['required', 'numeric'],
         ];
     }

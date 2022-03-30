@@ -1,11 +1,12 @@
 <script setup>
-import CreateProductView from "./views/products/create/CreateProductView.vue";
+import Header from "./views/components/Header.vue";
 </script>
 
 <template>
+    <Header />
     <div class="container py-3">
-        <main>
-            <CreateProductView />
+        <main class="py-3">
+            <RouterView />
         </main>
     </div>
 </template>

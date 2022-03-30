@@ -12,6 +12,8 @@ class Product extends Model
 
     protected $appends = ['url'];
 
+    protected $casts = ['description' => 'array'];
+
     protected $fillable = [
         'is_active', 'category_id', 'name', 'description', 'image', 'product_brand', 'product_rating', 'SKU', 'price'
     ];
